@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="EduCatalogDao" >
+  <resultMap id="BaseResultMap" type="com.ivan.entity.user.EduCatalog" >
+    <id column="folder_id" property="folderId" jdbcType="VARCHAR" />
+    <result column="catalog_id" property="catalogId" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="parent_id" property="parentId" jdbcType="VARCHAR" />
+    <result column="level" property="level" jdbcType="SMALLINT" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="creare_date" property="creareDate" jdbcType="TIMESTAMP" />
+    <result column="extend" property="extend" jdbcType="VARCHAR" />
+    <result column="evp_server" property="evpServer" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    folder_id, catalog_id, name, description, parent_id, level, creator, creare_date, 
+    extend, evp_server
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from edu_catalog
+    where folder_id = #{folderId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from edu_catalog
+    where folder_id = #{folderId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ivan.entity.user.EduCatalog" >
+    insert into edu_catalog (folder_id, catalog_id, name, 
+      description, parent_id, level, 
+      creator, creare_date, extend, 
+      evp_server)
+    values (#{folderId,jdbcType=VARCHAR}, #{catalogId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{parentId,jdbcType=VARCHAR}, #{level,jdbcType=SMALLINT}, 
+      #{creator,jdbcType=VARCHAR}, #{creareDate,jdbcType=TIMESTAMP}, #{extend,jdbcType=VARCHAR}, 
+      #{evpServer,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ivan.entity.user.EduCatalog" >
+    insert into edu_catalog
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="folderId != null" >
+        folder_id,
+      </if>
+      <if test="catalogId != null" >
+        catalog_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="creareDate != null" >
+        creare_date,
+      </if>
+      <if test="extend != null" >
+        extend,
+      </if>
+      <if test="evpServer != null" >
+        evp_server,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="folderId != null" >
+        #{folderId,jdbcType=VARCHAR},
+      </if>
+      <if test="catalogId != null" >
+        #{catalogId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=SMALLINT},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="creareDate != null" >
+        #{creareDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="extend != null" >
+        #{extend,jdbcType=VARCHAR},
+      </if>
+      <if test="evpServer != null" >
+        #{evpServer,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ivan.entity.user.EduCatalog" >
+    update edu_catalog
+    <set >
+      <if test="catalogId != null" >
+        catalog_id = #{catalogId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        level = #{level,jdbcType=SMALLINT},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="creareDate != null" >
+        creare_date = #{creareDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="extend != null" >
+        extend = #{extend,jdbcType=VARCHAR},
+      </if>
+      <if test="evpServer != null" >
+        evp_server = #{evpServer,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where folder_id = #{folderId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ivan.entity.user.EduCatalog" >
+    update edu_catalog
+    set catalog_id = #{catalogId,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      parent_id = #{parentId,jdbcType=VARCHAR},
+      level = #{level,jdbcType=SMALLINT},
+      creator = #{creator,jdbcType=VARCHAR},
+      creare_date = #{creareDate,jdbcType=TIMESTAMP},
+      extend = #{extend,jdbcType=VARCHAR},
+      evp_server = #{evpServer,jdbcType=VARCHAR}
+    where folder_id = #{folderId,jdbcType=VARCHAR}
+  </update>
+  
+  <resultMap type="com.ivan.model.user.EduCatalogModel" id="treeDataResultMap">
+	<id column="folder_id" property="folderId"/>
+	<result column="name" property="name"/>
+	<result column="level" property="level"/>
+	<collection property="children" javaType="arrayList" ofType="com.ivan.model.user.EduCatalogModel">
+	    <id column="cid" property="folderId"/>
+		<result column="cname" property="name"/>
+		<result column="clevel" property="level"/>
+		<collection property="children" column="cid" javaType="arrayList" ofType="com.ivan.model.user.EduCatalogModel" select="getCatalogs" />
+	</collection>
+  </resultMap>
+  
+  <select id="getCatalogs" parameterType="java.lang.String" resultMap="treeDataResultMap">
+	SELECT 
+			parent.folder_id,
+			parent. NAME,
+			parent.`level` AS `level`,
+			child.folder_id cid,
+			child. NAME cname,
+			child.`level` as `clevel`
+	FROM edu_catalog parent 
+	INNER JOIN  edu_catalog child ON(child.parent_id = parent.folder_id)
+	<if test="_parameter!=null and _parameter!=''">
+		WHERE parent.folder_id = #{folderId}
+	</if>
+  </select>
+</mapper>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry
+            location="D:\java\maven\generator\mysql-connector-java-5.1.34.jar"/>
+    <context id="my" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressDate" value="false"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1/push_dev" 
+                        userId="root"
+                        password="root"/>
+
+        <javaModelGenerator targetPackage="com.ivan.entity.user"
+                            targetProject="ivan-blog-server-entity">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="com.ivan.entity.mapper"
+                         targetProject="ivan-blog-server-entity">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+       <!--  <javaClientGenerator targetPackage="com.ivan.biz.user.dao"
+                             targetProject="ivan-blog-server-biz" type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator> -->
+
+        <table tableName="edu_catalog" domainObjectName="EduCatalog"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                                replaceString=""/>-->
+        </table>
+
+    </context>
+</generatorConfiguration>
