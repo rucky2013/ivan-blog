@@ -5,7 +5,7 @@ import java.util.Date;
 
 @SuppressWarnings("serial")
 public class EduCatalog implements Serializable{
-	
+    //ceshi	
     private String folderId;
 
     private String catalogId;
