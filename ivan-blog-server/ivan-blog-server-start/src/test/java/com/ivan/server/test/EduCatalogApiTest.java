@@ -14,8 +14,6 @@ import com.ivan.server.test.base.BaseSpringTest;
 
 public class EduCatalogApiTest  extends BaseSpringTest{
 	
-	private static Log _log = LogFactory.getLog(EduCatalogApiTest.class);
-
 	@Reference
 	private EduCatalogApi eduCatalogApi;
 	
@@ -23,6 +21,5 @@ public class EduCatalogApiTest  extends BaseSpringTest{
 	public void testGetCatalogs(){
 		List<EduCatalogModel> list = eduCatalogApi.getCatalogs("");
 		System.err.println(JSON.toJSONString(list));
-		_log.error(list);
 	}
 }
