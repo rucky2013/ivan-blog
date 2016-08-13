@@ -31,7 +31,6 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserApi{
 	*/
 	
 	public User getUserById(String id) {
-		
 		return userDao.selectByPrimaryKey(id);
 	}
 
